@@ -12,12 +12,17 @@ always @(*) begin
 
     Instr_32 = 32'b0;
     imm     = 18'b0;
+    rs1_p = 5'b0;
+    rs2_p = 5'b0;
+    rd_p  = 5'b0;
+    rs1   = 5'b0;
+    rs2   = 5'b0;
+    rd    = 5'b0;
 
     if (Instr[1:0] == 2'b11) begin
         Instr_32 = Instr[31:0];
     end
     else begin
-
         case (Instr[1:0])
             2'b00: begin // Quadrant 0
                 if (Instr[15:13] == 3'b000) begin
@@ -227,7 +232,7 @@ always @(*) begin
                         imm[17:12] = {Instr[12], Instr[6:2]};
 
                         Instr_32 = {
-                            {14{imm[12]}},      // imm[31:18]
+                            {14{imm[17]}},      // imm[31:18]
                             imm[17:12],              // imm[17:12]
                             rd,                     // rd = x0-x31
                             7'b0110111                // opcode = LUI
@@ -309,16 +314,26 @@ always @(*) begin
                             rd_p = Instr[11:7]; // x0-x31
 
                             Instr_32 = {
-                                12'b000000000000,       // imm[11:0]
+                                7'b0000000,       // funct7 
                                 rs2_p,                   // rs2 = x0-x31
-                                rd_p,                    // rd = x0-x31
+                                5'b00000,               // rs1 = x0
                                 3'b000,                 // funct3 = ADD
                                 rd_p,                    // rd = x0-x31
                                 7'b0110011              // opcode = R-type
                             };
                         end
-                        end else if (Instr[12] == 1'b1) begin
-                            if(Instr[6:2] == 5'b00000)begin
+                        end else begin
+                            if(Instr[11:7] == 5'b00000 &&
+                               Instr[6:2] == 5'b00000)begin
+                                // C.EBREAK
+                                Instr_32 = {
+                                    12'b000000000001,       // imm[11:0] = 1 for EBREAK
+                                    5'b00000,               // rs1 = x0
+                                    3'b000,                 // funct3
+                                    5'b00000,               // rd = x0
+                                    7'b1110011              // opcode = SYSTEM
+                                };
+                            end else if(Instr[6:2] == 5'b00000)begin
                                 //C.JALR - Jump and Link Register
                                 rs1_p = Instr[11:7]; // x0-x31
                                 Instr_32 = {
@@ -334,7 +349,7 @@ always @(*) begin
                                 rd_p  = Instr[11:7]; // x0-x31
 
                                 Instr_32 = {
-                                    12'b000000000000,       // imm[11:0]
+                                    7'b0000000,       // funct7 
                                     rs2_p,                   // rs2 = x0-x31
                                     rd_p,                    // rd = x0-x31
                                     3'b000,                 // funct3 = ADD
@@ -343,12 +358,51 @@ always @(*) begin
                                 };
                             end
                         end
-                end
+                end else if (Instr[15:13] == 3'b010) begin
+                    // C.LWSP - Load Word from Stack Pointer
+
+                    imm[5]   = Instr[12];
+                    imm[4:2] = Instr[6:4];
+                    imm[7:6] = Instr[3:2];
+                    imm[1:0] = 2'b00;
+
+                    rd_p     = Instr[11:7];       // rd = x0-x31
+                    rs1_p    = 5'b00010;          // rs1 = x2 (sp)
+
+                    Instr_32 = {
+                        4'b0000,                  // imm[11:8]
+                        imm[7:6],                 // imm[7:6]
+                        imm[5],                   // imm[5]
+                        imm[4:2],                 // imm[4:2]
+                        imm[1:0],                 // imm[1:0]
+                        rs1_p,                    // rs1 = x2 (sp)
+                        3'b010,                   // funct3 = LW
+                        rd_p,                     // rd
+                        7'b0000011                // opcode = LOAD
+                    };
+                end else if (Instr[15:13] == 3'b110) begin
+                        // C.SWSP - Store Word to Stack Pointer
+
+                        imm[5:2] = Instr[12:9];
+                        imm[7:6] = Instr[8:7];
+                        imm[1:0] = 2'b00;
+
+                        rs2_p = Instr[6:2];       // rs2 = x0-x31
+                        rs1_p = 5'b00010;         // rs1 = x2 (sp)
+
+                        Instr_32 = {
+                            4'b0000,              // imm[11:8]
+                            imm[7:6],             // imm[7:6]
+                            imm[5],               // imm[5]
+                            rs2_p,                // rs2
+                            rs1_p,                // rs1 = x2
+                            3'b010,               // funct3 = SW
+                            imm[4:2],             // imm[4:2]
+                            imm[1:0],             // imm[1:0]
+                            7'b0100011            // opcode = STORE
+                        };
+                    end
             end 
-            2'b11: begin // Quadrant 3
-                // Reserved for future use
-                Instr_32[31:0] = Instr[31:0]; // Pass through the instruction as is
-            end
         endcase
 
     end
