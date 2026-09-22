@@ -1,35 +1,32 @@
+module Reg_file(
+    input clk,
+    input rst,
 
-// reg_file.v - register file for single-cycle RISC-V CPU
-//              (with 32 registers, each of 32 bits)
-//              having two read ports, one write port
-//              write port is synchronous, read ports are combinational
-//              register 0 is hardwired to 0
+    input [4:0] rs1,
+    input [4:0] rs2,
+    input [4:0] rd,
 
-module Reg_file #(parameter DATA_WIDTH = 32) (
-    input       clk,
-    input       wr_en,
-    input       [4:0] rd_addr1, rd_addr2, wr_addr,
-    input       [DATA_WIDTH-1:0] wr_data,
-    output      [DATA_WIDTH-1:0] rd_data1, rd_data2
+    input [15:0] WriteData,
+    input RegWrite,
+
+    output [15:0] RD1,
+    output [15:0] RD2
 );
 
-reg [DATA_WIDTH-1:0] reg_file_arr [0:31];
+reg [15:0] registers [0:31];
 
-integer i;
-initial begin
-    for (i = 0; i < 32; i = i + 1) begin
-        reg_file_arr[i] = 0;
+assign RD1 = registers[rs1];
+assign RD2 = registers[rs2];
+
+always @(posedge clk or posedge rst) begin
+
+    if (rst) begin
+        // reset registers
     end
-end
+    else if (RegWrite) begin
+        registers[rd] <= WriteData;
+    end
 
-// register file write logic (synchronous)
-always @(posedge clk) begin
-    if (wr_en) reg_file_arr[wr_addr] <= wr_data;
 end
-
-// register file read logic (combinational)
-assign rd_data1 = ( rd_addr1 != 0 ) ? reg_file_arr[rd_addr1] : 0;
-assign rd_data2 = ( rd_addr2 != 0 ) ? reg_file_arr[rd_addr2] : 0;
 
 endmodule
-
