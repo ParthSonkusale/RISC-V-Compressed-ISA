@@ -93,6 +93,36 @@ initial begin
     else
         $display("C.MV FAIL");
 
+        // ==================================================
+        // TEST 3 : C.SUB x9, x10
+        // Encoding = 16'h8C89
+        // x9 = x9 - x10
+        // ==================================================
+
+        dut.datapath.reg_file.registers[9]  = 16'd50;  // x9 = 50
+        dut.datapath.reg_file.registers[10] = 16'd20;  // x10 = 20
+
+        Instr = 16'h8C89;  // C.SUB x9, x10
+
+        #10;
+
+        $display("========================================");
+        $display("TEST 3 : C.SUB x9, x10");
+        $display("========================================");
+
+        $display("x9 = %d", dut.datapath.reg_file.registers[9]);
+        $display("x10 = %d", dut.datapath.reg_file.registers[10]);
+        $display("RD1 = %d", dut.datapath.RD1);
+        $display("RD2 = %d", dut.datapath.RD2);
+        $display("ALU_A = %d", dut.datapath.ALU_A);
+        $display("ALUResult = %d", dut.datapath.ALUResult);
+        $display("Result = %d", Result);
+
+        if (dut.datapath.reg_file.registers[9] == 16'd30)
+            $display("C.SUB PASS");
+        else
+            $display("C.SUB FAIL");
+
 
     // --------------------------------
     // END SIMULATION

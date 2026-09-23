@@ -12,69 +12,69 @@
 # 
 # vlog -vlog01compat -work work +incdir+C:/SETU_ZOHO/code {C:/SETU_ZOHO/code/RVC_CPU.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:01:52 on Sep 23,2026
+# Start time: 21:37:31 on Sep 23,2026
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/SETU_ZOHO/code" C:/SETU_ZOHO/code/RVC_CPU.v 
 # -- Compiling module RVC_CPU
 # 
 # Top level modules:
 # 	RVC_CPU
-# End time: 21:01:52 on Sep 23,2026, Elapsed time: 0:00:00
+# End time: 21:37:31 on Sep 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/SETU_ZOHO/code {C:/SETU_ZOHO/code/Reg_file.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:01:52 on Sep 23,2026
+# Start time: 21:37:31 on Sep 23,2026
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/SETU_ZOHO/code" C:/SETU_ZOHO/code/Reg_file.v 
 # -- Compiling module Reg_file
 # 
 # Top level modules:
 # 	Reg_file
-# End time: 21:01:53 on Sep 23,2026, Elapsed time: 0:00:01
+# End time: 21:37:31 on Sep 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/SETU_ZOHO/code {C:/SETU_ZOHO/code/Decoder.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:01:53 on Sep 23,2026
+# Start time: 21:37:31 on Sep 23,2026
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/SETU_ZOHO/code" C:/SETU_ZOHO/code/Decoder.v 
 # -- Compiling module Decoder
 # 
 # Top level modules:
 # 	Decoder
-# End time: 21:01:53 on Sep 23,2026, Elapsed time: 0:00:00
+# End time: 21:37:31 on Sep 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/SETU_ZOHO/code {C:/SETU_ZOHO/code/Datapath.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:01:53 on Sep 23,2026
+# Start time: 21:37:31 on Sep 23,2026
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/SETU_ZOHO/code" C:/SETU_ZOHO/code/Datapath.v 
 # -- Compiling module Datapath
 # 
 # Top level modules:
 # 	Datapath
-# End time: 21:01:53 on Sep 23,2026, Elapsed time: 0:00:00
+# End time: 21:37:31 on Sep 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/SETU_ZOHO/code {C:/SETU_ZOHO/code/ALU.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:01:53 on Sep 23,2026
+# Start time: 21:37:31 on Sep 23,2026
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/SETU_ZOHO/code" C:/SETU_ZOHO/code/ALU.v 
 # -- Compiling module ALU
 # 
 # Top level modules:
 # 	ALU
-# End time: 21:01:53 on Sep 23,2026, Elapsed time: 0:00:00
+# End time: 21:37:31 on Sep 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -vlog01compat -work work +incdir+C:/SETU_ZOHO/.tb {C:/SETU_ZOHO/.tb/RVC_CPU_tb.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:01:53 on Sep 23,2026
+# Start time: 21:37:31 on Sep 23,2026
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/SETU_ZOHO/.tb" C:/SETU_ZOHO/.tb/RVC_CPU_tb.v 
 # -- Compiling module RVC_CPU_tb
 # 
 # Top level modules:
 # 	RVC_CPU_tb
-# End time: 21:01:53 on Sep 23,2026, Elapsed time: 0:00:00
+# End time: 21:37:31 on Sep 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  RVC_CPU_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" RVC_CPU_tb 
-# Start time: 21:01:53 on Sep 23,2026
+# Start time: 21:37:32 on Sep 23,2026
 # Loading work.RVC_CPU_tb
 # Loading work.RVC_CPU
 # Loading work.Datapath
@@ -111,10 +111,21 @@
 # Result =    25
 # C.MV PASS
 # ========================================
+# TEST 3 : C.SUB x9, x10
+# ========================================
+# x9 =    30
+# x10 =    20
+# RD1 =    30
+# RD2 =    20
+# ALU_A =    30
+# ALUResult =    10
+# Result =    10
+# C.SUB PASS
+# ========================================
 # ALL TESTS COMPLETED
 # ========================================
-# ** Note: $stop    : C:/SETU_ZOHO/.tb/RVC_CPU_tb.v(106)
-#    Time: 40 ns  Iteration: 0  Instance: /RVC_CPU_tb
-# Break in Module RVC_CPU_tb at C:/SETU_ZOHO/.tb/RVC_CPU_tb.v line 106
-# End time: 21:06:16 on Sep 23,2026, Elapsed time: 0:04:23
+# ** Note: $stop    : C:/SETU_ZOHO/.tb/RVC_CPU_tb.v(136)
+#    Time: 50 ns  Iteration: 0  Instance: /RVC_CPU_tb
+# Break in Module RVC_CPU_tb at C:/SETU_ZOHO/.tb/RVC_CPU_tb.v line 136
+# End time: 21:49:47 on Sep 23,2026, Elapsed time: 0:12:15
 # Errors: 0, Warnings: 0

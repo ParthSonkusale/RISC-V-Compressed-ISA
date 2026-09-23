@@ -37,6 +37,19 @@ always @(*) begin
         ISCmv    = 1'b1;
     end
 
+    if(Instr[15:10] == 6'b100011 &&
+       Instr[6:5]   == 2'b00 &&
+       Instr[1:0]   == 2'b01) begin
+
+        rd       = {2'b01, Instr[9:7]};
+        rs2      = {2'b01, Instr[4:2]};
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b0;
+        ISCmv    = 1'b0;
+        ALUCtrl  = 3'b001;
+       end
+
+
 end
 
 endmodule
