@@ -10,7 +10,7 @@ always @(*) begin
 
     case(ALUCtrl)
 
-        3'b000: ALUResult = A + B;   // C.ADD
+        3'b000: ALUResult = A + B;   // C.ADD , C.MV
 
         default: ALUResult = 16'b0;
     endcase

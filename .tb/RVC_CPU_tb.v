@@ -15,37 +15,96 @@ RVC_CPU dut (
     .Result(Result)
 );
 
-// Clock generation
+// Clock: 10 ns period
 always #5 clk = ~clk;
+
 
 initial begin
 
-    // Initial values
-    clk  = 0;
-    rst  = 1;
+    // --------------------------------
+    // INITIALIZATION
+    // --------------------------------
+    clk   = 0;
+    rst   = 1;
     Instr = 16'h0000;
 
-    // Reset
     #10;
     rst = 0;
 
-    // Initialize registers for testing
+
+    // ==================================================
+    // TEST 1 : C.ADD x3, x4
+    // Encoding = 16'h9192
+    // x3 = x3 + x4
+    // ==================================================
+
     dut.datapath.reg_file.registers[3] = 16'd10;  // x3 = 10
     dut.datapath.reg_file.registers[4] = 16'd20;  // x4 = 20
 
-    // C.ADD x3, x4
-    Instr = 16'h9192;
+    Instr = 16'h9192;  // C.ADD x3, x4
 
-    // Wait for one clock
     #10;
 
-    // Display result
+    $display("========================================");
+    $display("TEST 1 : C.ADD x3, x4");
+    $display("========================================");
+
     $display("x3 = %d", dut.datapath.reg_file.registers[3]);
+    $display("x4 = %d", dut.datapath.reg_file.registers[4]);
+    $display("RD1 = %d", dut.datapath.RD1);
+    $display("RD2 = %d", dut.datapath.RD2);
+    $display("ALU_A = %d", dut.datapath.ALU_A);
+    $display("ALUResult = %d", dut.datapath.ALUResult);
     $display("Result = %d", Result);
 
+    if (dut.datapath.reg_file.registers[3] == 16'd30)
+        $display("C.ADD PASS");
+    else
+        $display("C.ADD FAIL");
+
+
+    // ==================================================
+    // TEST 2 : C.MV x5, x4
+    // Encoding = 16'h8292
+    // x5 = x4
+    // ==================================================
+
+    dut.datapath.reg_file.registers[4] = 16'd25;  // x4 = 25
+    dut.datapath.reg_file.registers[5] = 16'd0;   // x5 = 0
+
+    Instr = 16'h8292;  // C.MV x5, x4
+
     #10;
 
+    $display("========================================");
+    $display("TEST 2 : C.MV x5, x4");
+    $display("========================================");
+
+    $display("x4 = %d", dut.datapath.reg_file.registers[4]);
+    $display("x5 = %d", dut.datapath.reg_file.registers[5]);
+    $display("RD1 = %d", dut.datapath.RD1);
+    $display("RD2 = %d", dut.datapath.RD2);
+    $display("ALU_A = %d", dut.datapath.ALU_A);
+    $display("ALUResult = %d", dut.datapath.ALUResult);
+    $display("Result = %d", Result);
+
+    if (dut.datapath.reg_file.registers[5] == 16'd25)
+        $display("C.MV PASS");
+    else
+        $display("C.MV FAIL");
+
+
+    // --------------------------------
+    // END SIMULATION
+    // --------------------------------
+
+    #10;
+    $display("========================================");
+    $display("ALL TESTS COMPLETED");
+    $display("========================================");
+
     $stop;
+
 end
 
 endmodule

@@ -1,0 +1,145 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Result[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[8]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[9]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[10]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[11]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[12]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[13]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[14]",
+					"strict" : false
+				},
+				{
+					"name" : "Result[15]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[15]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[13]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[14]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[9]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[10]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[8]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[11]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[12]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

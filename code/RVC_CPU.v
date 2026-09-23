@@ -14,11 +14,11 @@ wire [2:0] ALUCtrl;
 
 Datapath datapath(
     clk,rst,ALUCtrl,rd,rs2,RegWrite,ALUSrc,
-    Result
+    ISCmv,Result
 );
 
 Decoder decoder(
-    Instr,rd,rs2,RegWrite,ALUSrc,ALUCtrl
+    Instr,rd,rs2,RegWrite,ALUSrc,ISCmv,ALUCtrl
 );
 
 
