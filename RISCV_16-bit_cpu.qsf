@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
-set_global_assignment -name TOP_LEVEL_ENTITY "RISCV_16-bit_cpu"
+set_global_assignment -name TOP_LEVEL_ENTITY RVC_CPU
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "07:52:02  SEPTEMBER 06, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
@@ -55,4 +55,20 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name VERILOG_FILE Data_path.v
+set_global_assignment -name VERILOG_FILE code/RVC_CPU.v
+set_global_assignment -name VERILOG_FILE code/Reg_file.v
+set_global_assignment -name VERILOG_FILE code/Decoder.v
+set_global_assignment -name VERILOG_FILE code/Datapath.v
+set_global_assignment -name VERILOG_FILE code/ALU.v
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH RVC_CPU_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME RVC_CPU_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id RVC_CPU_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME RVC_CPU_tb -section_id RVC_CPU_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE .tb/RVC_CPU_tb.v -section_id RVC_CPU_tb
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,0 +1,36 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/SETU_ZOHO/simulation/modelsim
+vRVC_CPU
+!s110 1790131538
+!i10b 1
+!s100 5ReM[[:RSX<2;?oZPQdVO0
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+IK_>BjSmLz9gJ@6>m9ni?b2
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1790131255
+8C:/SETU_ZOHO/code/RVC_CPU.v
+FC:/SETU_ZOHO/code/RVC_CPU.v
+!i122 0
+L0 1 25
+OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1790131538.000000
+!s107 C:/SETU_ZOHO/code/RVC_CPU.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/SETU_ZOHO/code|C:/SETU_ZOHO/code/RVC_CPU.v|
+!i113 1
+o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+C:/SETU_ZOHO/code
+tCvgOpt 0
+n@r@v@c_@c@p@u
