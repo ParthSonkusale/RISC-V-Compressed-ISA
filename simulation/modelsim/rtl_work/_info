@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dC:/SETU_ZOHO/simulation/modelsim
 vALU
-Z1 !s110 1790179651
+Z1 !s110 1790216449
 !i10b 1
-!s100 :b=TECecNOXa=]l0^MGO82
+!s100 K=X2gXdVMoJ87OUga0XWn0
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-Ij][`mb_d2m=<TzZ;<g1c;3
+I?dGcoda3L;Q8mXIl7_]]R1
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1790179227
+w1790215564
 8C:/SETU_ZOHO/code/ALU.v
 FC:/SETU_ZOHO/code/ALU.v
 !i122 4
-L0 1 19
+L0 1 20
 Z4 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z5 !s108 1790179651.000000
+Z5 !s108 1790216449.000000
 !s107 C:/SETU_ZOHO/code/ALU.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/SETU_ZOHO/code|C:/SETU_ZOHO/code/ALU.v|
 !i113 1
@@ -62,16 +62,16 @@ n@datapath
 vDecoder
 R1
 !i10b 1
-!s100 ]8c6aa0:fNOkZ9S`i:aj`3
+!s100 M?I:zNDc[P:6cI<kLe@l[0
 R2
-IIElBGhFS1U=1F_eC0cnc[0
+I[;dHh8K1]Rb=2dcB2g8gL1
 R3
 R0
-w1790179618
+w1790216263
 8C:/SETU_ZOHO/code/Decoder.v
 FC:/SETU_ZOHO/code/Decoder.v
 !i122 2
-L0 1 55
+L0 1 67
 R4
 r1
 !s85 0
@@ -110,7 +110,7 @@ R7
 R8
 n@reg_file
 vRVC_CPU
-R1
+!s110 1790216448
 !i10b 1
 !s100 8RUmb;N68[iloX=iD6>U93
 R2
@@ -126,7 +126,7 @@ R4
 r1
 !s85 0
 31
-R5
+!s108 1790216448.000000
 !s107 C:/SETU_ZOHO/code/RVC_CPU.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/SETU_ZOHO/code|C:/SETU_ZOHO/code/RVC_CPU.v|
 !i113 1
@@ -137,16 +137,16 @@ n@r@v@c_@c@p@u
 vRVC_CPU_tb
 R1
 !i10b 1
-!s100 BDZNFA@U7LN7K]>>g=][m0
+!s100 dQaQlGkX8g2]QkYj<T;b13
 R2
-I7Im41B?]PmV:0an0h30;F2
+I5b:mVE<<jn;:zAKidZlXF2
 R3
 R0
-w1790179481
+w1790216443
 8C:/SETU_ZOHO/.tb/RVC_CPU_tb.v
 FC:/SETU_ZOHO/.tb/RVC_CPU_tb.v
 !i122 5
-L0 3 138
+L0 3 165
 R4
 r1
 !s85 0
