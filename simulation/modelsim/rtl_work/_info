@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dC:/SETU_ZOHO/simulation/modelsim
 vALU
-Z1 !s110 1790216449
+Z1 !s110 1790217005
 !i10b 1
-!s100 K=X2gXdVMoJ87OUga0XWn0
+!s100 @Yn1`UgjC2LB`zlA:>?=S1
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I?dGcoda3L;Q8mXIl7_]]R1
+IjHAGe^5flZTmbIQ3O[f^A1
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1790215564
+w1790216945
 8C:/SETU_ZOHO/code/ALU.v
 FC:/SETU_ZOHO/code/ALU.v
 !i122 4
-L0 1 20
+L0 1 21
 Z4 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z5 !s108 1790216449.000000
+Z5 !s108 1790217005.000000
 !s107 C:/SETU_ZOHO/code/ALU.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/SETU_ZOHO/code|C:/SETU_ZOHO/code/ALU.v|
 !i113 1
@@ -60,23 +60,23 @@ R7
 R8
 n@datapath
 vDecoder
-R1
+Z9 !s110 1790217004
 !i10b 1
-!s100 M?I:zNDc[P:6cI<kLe@l[0
+!s100 6HZ`D=C`EVAhOd[WVGj:X3
 R2
-I[;dHh8K1]Rb=2dcB2g8gL1
+I3@cNh_lOS2:Y3Dz4bePQg0
 R3
 R0
-w1790216263
+w1790216935
 8C:/SETU_ZOHO/code/Decoder.v
 FC:/SETU_ZOHO/code/Decoder.v
 !i122 2
-L0 1 67
+L0 1 79
 R4
 r1
 !s85 0
 31
-R5
+Z10 !s108 1790217004.000000
 !s107 C:/SETU_ZOHO/code/Decoder.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/SETU_ZOHO/code|C:/SETU_ZOHO/code/Decoder.v|
 !i113 1
@@ -85,7 +85,7 @@ R7
 R8
 n@decoder
 vReg_file
-R1
+R9
 !i10b 1
 !s100 :JOKG90:G;O^NK1K>HG920
 R2
@@ -101,7 +101,7 @@ R4
 r1
 !s85 0
 31
-R5
+R10
 !s107 C:/SETU_ZOHO/code/Reg_file.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/SETU_ZOHO/code|C:/SETU_ZOHO/code/Reg_file.v|
 !i113 1
@@ -110,7 +110,7 @@ R7
 R8
 n@reg_file
 vRVC_CPU
-!s110 1790216448
+R9
 !i10b 1
 !s100 8RUmb;N68[iloX=iD6>U93
 R2
@@ -126,7 +126,7 @@ R4
 r1
 !s85 0
 31
-!s108 1790216448.000000
+R10
 !s107 C:/SETU_ZOHO/code/RVC_CPU.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/SETU_ZOHO/code|C:/SETU_ZOHO/code/RVC_CPU.v|
 !i113 1
@@ -137,16 +137,16 @@ n@r@v@c_@c@p@u
 vRVC_CPU_tb
 R1
 !i10b 1
-!s100 dQaQlGkX8g2]QkYj<T;b13
+!s100 P7805iDnzEDEa;;YH<0BK3
 R2
-I5b:mVE<<jn;:zAKidZlXF2
+IU;mDT4X5QeSPIhFo44o>@2
 R3
 R0
-w1790216443
+w1790216979
 8C:/SETU_ZOHO/.tb/RVC_CPU_tb.v
 FC:/SETU_ZOHO/.tb/RVC_CPU_tb.v
 !i122 5
-L0 3 165
+L0 3 193
 R4
 r1
 !s85 0

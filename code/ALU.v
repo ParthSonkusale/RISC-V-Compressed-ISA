@@ -13,6 +13,7 @@ always @(*) begin
         3'b000: ALUResult = A + B;   // C.ADD , C.MV
         3'b001: ALUResult = A - B;   // C.SUB
         3'b010: ALUResult = A ^ B;   // C.XOR
+        3'b011: ALUResult = A | B;   // C.OR
 
         default: ALUResult = 16'b0;
     endcase

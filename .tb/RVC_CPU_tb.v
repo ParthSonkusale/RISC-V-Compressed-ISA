@@ -150,6 +150,34 @@ initial begin
         else
             $display("C.XOR FAIL");
 
+        // ==================================================
+        // TEST 5 : C.OR x9, x10
+        // Encoding = 16'h8CC9
+        // x9 = x9 | x10
+        // ==================================================
+
+        dut.datapath.reg_file.registers[9]  = 16'h000F;
+        dut.datapath.reg_file.registers[10] = 16'h0033;
+
+        Instr = 16'h8CC9;  // C.OR x9, x10
+
+        #10;
+
+        $display("========================================");
+        $display("TEST 5 : C.OR x9, x10");
+        $display("========================================");
+
+        $display("x9 = %h", dut.datapath.reg_file.registers[9]);
+        $display("x10 = %h", dut.datapath.reg_file.registers[10]);
+        $display("RD1 = %h", dut.datapath.RD1);
+        $display("RD2 = %h", dut.datapath.RD2);
+        $display("ALUResult = %h", dut.datapath.ALUResult);
+        $display("Result = %h", Result);
+
+        if (dut.datapath.reg_file.registers[9] == 16'h003F)
+            $display("C.OR PASS");
+        else
+            $display("C.OR FAIL");
 
     // --------------------------------
     // END SIMULATION

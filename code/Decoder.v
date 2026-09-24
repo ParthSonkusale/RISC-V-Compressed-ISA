@@ -13,7 +13,7 @@ always @(*) begin
     rs2      = 5'b00000;
     RegWrite = 1'b0;
     ALUSrc   = 1'b0;
-    ISCmv    = 1'b0;       
+    ISCmv    = 1'b0;       // IMPORTANT
     ALUCtrl  = 3'b000;
 
     if (Instr[15:12] == 4'b1001 &&
@@ -62,6 +62,17 @@ always @(*) begin
         ALUCtrl  = 3'b010;
     end
 
+    else if(Instr[15:10] == 6'b100011 &&
+        Instr[6:5]   == 2'b10 &&
+        Instr[1:0]   == 2'b01) begin // C.OR
+
+    rd       = {2'b01, Instr[9:7]};
+    rs2      = {2'b01, Instr[4:2]};
+    RegWrite = 1'b1;
+    ALUSrc   = 1'b0;
+    ISCmv    = 1'b0;
+    ALUCtrl  = 3'b011;
+    end
 
 end
 
