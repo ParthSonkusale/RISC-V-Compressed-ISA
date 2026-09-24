@@ -208,6 +208,32 @@ initial begin
         else
             $display("C.AND FAIL");    
 
+        // ==================================================
+        // TEST 7 : C.LI x6, 10
+        // Encoding = 16'h4511
+        // x6 = 10
+        // ==================================================
+
+        dut.datapath.reg_file.registers[6] = 16'd0;
+
+        Instr = 16'h4329;
+
+        #10;
+
+        $display("========================================");
+        $display("TEST 7 : C.LI x6, 10");
+        $display("========================================");
+
+        $display("x6 = %d", dut.datapath.reg_file.registers[6]);
+        $display("ImmExt = %d", dut.datapath.ImmExt);
+        $display("ALUResult = %d", dut.datapath.ALUResult);
+        $display("Result = %d", Result);
+        $display("Instr     = %h", Instr);
+        if (dut.datapath.reg_file.registers[6] == 16'd10)
+            $display("C.LI PASS");
+        else
+            $display("C.LI FAIL");
+
     // --------------------------------
     // END SIMULATION
     // --------------------------------

@@ -7,7 +7,7 @@ module Datapath(
     input RegWrite,
     input ALUSrc,
     input ISCmv,
-
+    input [15:0] ImmExt,
     output [15:0] ALUResult
 );
 
@@ -15,6 +15,7 @@ wire [15:0] RD1;
 wire [15:0] RD2;
 wire [15:0] WriteData;
 wire [15:0] ALU_A;
+wire [15:0] ALU_B;
 
 Reg_file reg_file(
     clk, rst,rd,
@@ -23,10 +24,11 @@ Reg_file reg_file(
 );
 
 ALU alu(
-    ALU_A,RD2,
+    ALU_A,ALU_B,
     ALUCtrl,ALUResult
 );
 
+assign ALU_B = ALUSrc ? ImmExt : RD2;
 assign ALU_A = ISCmv ? 16'b0 : RD1;
 assign WriteData = ALUResult;
 
