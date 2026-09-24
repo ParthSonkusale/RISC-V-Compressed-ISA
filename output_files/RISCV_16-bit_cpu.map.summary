@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Thu Sep 24 07:59:48 2026
+Analysis & Synthesis Status : Successful - Thu Sep 24 08:07:15 2026
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : RISCV_16-bit_cpu
 Top-level Entity Name : RVC_CPU
 Family : Cyclone IV E
-Total logic elements : 1,296
-    Total combinational functions : 800
+Total logic elements : 1,318
+    Total combinational functions : 822
     Dedicated logic registers : 512
 Total registers : 512
 Total pins : 34

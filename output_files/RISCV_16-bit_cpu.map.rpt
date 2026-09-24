@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RISCV_16-bit_cpu
-Thu Sep 24 07:59:48 2026
+Thu Sep 24 08:07:15 2026
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -44,13 +44,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Sep 24 07:59:48 2026       ;
+; Analysis & Synthesis Status        ; Successful - Thu Sep 24 08:07:15 2026       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; RISCV_16-bit_cpu                            ;
 ; Top-level Entity Name              ; RVC_CPU                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,296                                       ;
-;     Total combinational functions  ; 800                                         ;
+; Total logic elements               ; 1,318                                       ;
+;     Total combinational functions  ; 822                                         ;
 ;     Dedicated logic registers      ; 512                                         ;
 ; Total registers                    ; 512                                         ;
 ; Total pins                         ; 34                                          ;
@@ -186,16 +186,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 1,296     ;
+; Estimated Total logic elements              ; 1,318     ;
 ;                                             ;           ;
-; Total combinational functions               ; 800       ;
+; Total combinational functions               ; 822       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 739       ;
-;     -- 3 input functions                    ; 52        ;
-;     -- <=2 input functions                  ; 9         ;
+;     -- 4 input functions                    ; 770       ;
+;     -- 3 input functions                    ; 31        ;
+;     -- <=2 input functions                  ; 21        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 784       ;
+;     -- normal mode                          ; 806       ;
 ;     -- arithmetic mode                      ; 16        ;
 ;                                             ;           ;
 ; Total registers                             ; 512       ;
@@ -208,7 +208,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 512       ;
-; Total fan-out                               ; 5228      ;
+; Total fan-out                               ; 5313      ;
 ; Average fan-out                             ; 3.79      ;
 +---------------------------------------------+-----------+
 
@@ -218,11 +218,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                          ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------+-------------+--------------+
-; |RVC_CPU                   ; 800 (0)             ; 512 (0)                   ; 0           ; 0            ; 0       ; 0         ; 34   ; 0            ; |RVC_CPU                                     ; RVC_CPU     ; work         ;
-;    |Datapath:datapath|     ; 779 (338)           ; 512 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Datapath:datapath                   ; Datapath    ; work         ;
-;       |ALU:alu|            ; 65 (65)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Datapath:datapath|ALU:alu           ; ALU         ; work         ;
-;       |Reg_file:reg_file|  ; 376 (376)           ; 512 (512)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Datapath:datapath|Reg_file:reg_file ; Reg_file    ; work         ;
-;    |Decoder:decoder|       ; 21 (21)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Decoder:decoder                     ; Decoder     ; work         ;
+; |RVC_CPU                   ; 822 (0)             ; 512 (0)                   ; 0           ; 0            ; 0       ; 0         ; 34   ; 0            ; |RVC_CPU                                     ; RVC_CPU     ; work         ;
+;    |Datapath:datapath|     ; 796 (338)           ; 512 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Datapath:datapath                   ; Datapath    ; work         ;
+;       |ALU:alu|            ; 83 (83)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Datapath:datapath|ALU:alu           ; ALU         ; work         ;
+;       |Reg_file:reg_file|  ; 375 (375)           ; 512 (512)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Datapath:datapath|Reg_file:reg_file ; Reg_file    ; work         ;
+;    |Decoder:decoder|       ; 26 (26)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RVC_CPU|Decoder:decoder                     ; Decoder     ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -247,9 +247,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |RVC_CPU|Datapath:datapath|ALU:alu|Mux15           ;
-; 32:1               ; 16 bits   ; 336 LEs       ; 336 LEs              ; 0 LEs                  ; No         ; |RVC_CPU|Datapath:datapath|Reg_file:reg_file|Mux31 ;
-; 33:1               ; 16 bits   ; 352 LEs       ; 352 LEs              ; 0 LEs                  ; No         ; |RVC_CPU|Datapath:datapath|ALU_A[12]               ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |RVC_CPU|Decoder:decoder|ALUCtrl[0]                ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; No         ; |RVC_CPU|Datapath:datapath|ALU:alu|Mux0            ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 336 LEs              ; 0 LEs                  ; No         ; |RVC_CPU|Datapath:datapath|Reg_file:reg_file|Mux18 ;
+; 33:1               ; 16 bits   ; 352 LEs       ; 352 LEs              ; 0 LEs                  ; No         ; |RVC_CPU|Datapath:datapath|ALU_A[0]                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
 
 
@@ -261,16 +262,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; boundary_port         ; 34                          ;
 ; cycloneiii_ff         ; 512                         ;
 ;     ENA CLR           ; 512                         ;
-; cycloneiii_lcell_comb ; 800                         ;
+; cycloneiii_lcell_comb ; 822                         ;
 ;     arith             ; 16                          ;
 ;         3 data inputs ; 16                          ;
-;     normal            ; 784                         ;
-;         2 data inputs ; 9                           ;
-;         3 data inputs ; 36                          ;
-;         4 data inputs ; 739                         ;
+;     normal            ; 806                         ;
+;         2 data inputs ; 21                          ;
+;         3 data inputs ; 15                          ;
+;         4 data inputs ; 770                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 12.50                       ;
-; Average LUT depth     ; 9.53                        ;
+; Max LUT depth         ; 12.20                       ;
+; Average LUT depth     ; 9.48                        ;
 +-----------------------+-----------------------------+
 
 
@@ -289,7 +290,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Sep 24 07:59:41 2026
+    Info: Processing started: Thu Sep 24 08:07:08 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV_16-bit_cpu -c RISCV_16-bit_cpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
@@ -313,13 +314,13 @@ Info (12128): Elaborating entity "Decoder" for hierarchy "Decoder:decoder" File:
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1346 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1368 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 16 output pins
-    Info (21061): Implemented 1312 logic cells
+    Info (21061): Implemented 1334 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 4834 megabytes
-    Info: Processing ended: Thu Sep 24 07:59:48 2026
+    Info: Processing ended: Thu Sep 24 08:07:15 2026
     Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:13
 
