@@ -260,6 +260,24 @@ initial begin
         $display("x2 = %d", dut.datapath.reg_file.registers[2]);
         $display("ImmExt = %d", dut.decoder.ImmExt);
 
+        // TEST : C.ADDI4SPN x8, 4
+
+        dut.datapath.reg_file.registers[2] = 16'd100;  // x2 = 100
+        dut.datapath.reg_file.registers[8] = 16'd0;    // x8 = 0
+
+        Instr = 16'h0800;
+
+        #10;
+
+        if (dut.datapath.reg_file.registers[8] == 16'd116)
+            $display("C.ADDI4SPN PASS");
+        else
+            $display("C.ADDI4SPN FAIL");
+
+        $display("x2     = %d", dut.datapath.reg_file.registers[2]);
+        $display("x8     = %d", dut.datapath.reg_file.registers[8]);
+        $display("ImmExt = %d", dut.decoder.ImmExt);
+
     // --------------------------------
     // END SIMULATION
     // --------------------------------

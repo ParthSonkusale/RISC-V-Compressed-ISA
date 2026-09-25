@@ -17,22 +17,22 @@ Instr[12] => Instr[12].IN1
 Instr[13] => Instr[13].IN1
 Instr[14] => Instr[14].IN1
 Instr[15] => Instr[15].IN1
-Result[0] << Datapath:datapath.port9
-Result[1] << Datapath:datapath.port9
-Result[2] << Datapath:datapath.port9
-Result[3] << Datapath:datapath.port9
-Result[4] << Datapath:datapath.port9
-Result[5] << Datapath:datapath.port9
-Result[6] << Datapath:datapath.port9
-Result[7] << Datapath:datapath.port9
-Result[8] << Datapath:datapath.port9
-Result[9] << Datapath:datapath.port9
-Result[10] << Datapath:datapath.port9
-Result[11] << Datapath:datapath.port9
-Result[12] << Datapath:datapath.port9
-Result[13] << Datapath:datapath.port9
-Result[14] << Datapath:datapath.port9
-Result[15] << Datapath:datapath.port9
+Result[0] <= Datapath:datapath.port10
+Result[1] <= Datapath:datapath.port10
+Result[2] <= Datapath:datapath.port10
+Result[3] <= Datapath:datapath.port10
+Result[4] <= Datapath:datapath.port10
+Result[5] <= Datapath:datapath.port10
+Result[6] <= Datapath:datapath.port10
+Result[7] <= Datapath:datapath.port10
+Result[8] <= Datapath:datapath.port10
+Result[9] <= Datapath:datapath.port10
+Result[10] <= Datapath:datapath.port10
+Result[11] <= Datapath:datapath.port10
+Result[12] <= Datapath:datapath.port10
+Result[13] <= Datapath:datapath.port10
+Result[14] <= Datapath:datapath.port10
+Result[15] <= Datapath:datapath.port10
 
 
 |RVC_CPU|Datapath:datapath
@@ -100,6 +100,7 @@ ImmExt[12] => ALU_B.DATAB
 ImmExt[13] => ALU_B.DATAB
 ImmExt[14] => ALU_B.DATAB
 ImmExt[15] => ALU_B.DATAB
+UseSp => ~NO_FANOUT~
 ALUResult[0] <= WriteData[0].DB_MAX_OUTPUT_PORT_TYPE
 ALUResult[1] <= WriteData[1].DB_MAX_OUTPUT_PORT_TYPE
 ALUResult[2] <= WriteData[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -2596,8 +2597,11 @@ ALUResult[15] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 |RVC_CPU|Decoder:decoder
 Instr[0] => Equal2.IN1
 Instr[0] => Equal10.IN0
+Instr[0] => Equal12.IN1
 Instr[1] => Equal2.IN0
 Instr[1] => Equal10.IN1
+Instr[1] => Equal12.IN0
+Instr[2] => rd.DATAB
 Instr[2] => ImmExt.DATAB
 Instr[2] => ImmExt.DATAB
 Instr[2] => ImmExt.DATAB
@@ -2607,6 +2611,7 @@ Instr[2] => rs2.DATAB
 Instr[2] => rs2.DATAB
 Instr[2] => rs2.DATAB
 Instr[2] => rs2.DATAB
+Instr[3] => rd.DATAB
 Instr[3] => ImmExt.DATAB
 Instr[3] => ImmExt.DATAB
 Instr[3] => ImmExt.DATAB
@@ -2616,6 +2621,7 @@ Instr[3] => rs2.DATAB
 Instr[3] => rs2.DATAB
 Instr[3] => rs2.DATAB
 Instr[3] => rs2.DATAB
+Instr[4] => rd.DATAB
 Instr[4] => ImmExt.DATAB
 Instr[4] => ImmExt.DATAB
 Instr[4] => ImmExt.DATAB
@@ -2625,6 +2631,7 @@ Instr[4] => rs2.DATAB
 Instr[4] => rs2.DATAB
 Instr[4] => rs2.DATAB
 Instr[4] => rs2.DATAB
+Instr[5] => ImmExt.DATAB
 Instr[5] => ImmExt.DATAB
 Instr[5] => ImmExt.DATAB
 Instr[5] => ImmExt.DATAB
@@ -2637,12 +2644,14 @@ Instr[5] => Equal7.IN1
 Instr[6] => ImmExt.DATAB
 Instr[6] => ImmExt.DATAB
 Instr[6] => ImmExt.DATAB
+Instr[6] => ImmExt.DATAB
 Instr[6] => rs2.DATAB
 Instr[6] => rs2.DATAB
 Instr[6] => Equal3.IN0
 Instr[6] => Equal4.IN1
 Instr[6] => Equal5.IN0
 Instr[6] => Equal7.IN0
+Instr[7] => ImmExt.DATAB
 Instr[7] => rd.DATAB
 Instr[7] => rd.DATAB
 Instr[7] => rd.DATAB
@@ -2651,6 +2660,7 @@ Instr[7] => rd.DATAB
 Instr[7] => rd.DATAB
 Instr[7] => rd.DATAB
 Instr[7] => rd.DATAB
+Instr[8] => ImmExt.DATAB
 Instr[8] => rd.DATAB
 Instr[8] => rd.DATAB
 Instr[8] => rd.DATAB
@@ -2659,6 +2669,7 @@ Instr[8] => rd.DATAB
 Instr[8] => rd.DATAB
 Instr[8] => rd.DATAB
 Instr[8] => rd.DATAB
+Instr[9] => ImmExt.DATAB
 Instr[9] => rd.DATAB
 Instr[9] => rd.DATAB
 Instr[9] => rd.DATAB
@@ -2667,16 +2678,22 @@ Instr[9] => rd.DATAB
 Instr[9] => rd.DATAB
 Instr[9] => rd.DATAB
 Instr[9] => rd.DATAB
+Instr[10] => ImmExt.DATAB
 Instr[10] => rd.DATAB
 Instr[10] => rd.DATAB
 Instr[10] => rd.DATAB
 Instr[10] => rd.DATAB
 Instr[10] => Equal6.IN2
+Instr[11] => ImmExt.DATAB
 Instr[11] => rd.DATAB
 Instr[11] => rd.DATAB
 Instr[11] => rd.DATAB
 Instr[11] => rd.DATAB
 Instr[11] => Equal6.IN1
+Instr[12] => ImmExt.DATAB
+Instr[12] => ImmExt.DATAB
+Instr[12] => ImmExt.DATAB
+Instr[12] => ImmExt.DATAB
 Instr[12] => ImmExt.DATAB
 Instr[12] => ImmExt.DATAB
 Instr[12] => ImmExt.DATAB
@@ -2738,6 +2755,7 @@ ImmExt[12] <= ImmExt.DB_MAX_OUTPUT_PORT_TYPE
 ImmExt[13] <= ImmExt.DB_MAX_OUTPUT_PORT_TYPE
 ImmExt[14] <= ImmExt.DB_MAX_OUTPUT_PORT_TYPE
 ImmExt[15] <= ImmExt.DB_MAX_OUTPUT_PORT_TYPE
+UseSp <= UseSp.DB_MAX_OUTPUT_PORT_TYPE
 ALUCtrl[0] <= ALUCtrl.DB_MAX_OUTPUT_PORT_TYPE
 ALUCtrl[1] <= ALUCtrl.DB_MAX_OUTPUT_PORT_TYPE
 ALUCtrl[2] <= ALUCtrl.DB_MAX_OUTPUT_PORT_TYPE

@@ -6,6 +6,7 @@ module Decoder(
     output reg ALUSrc,
     output reg ISCmv,
     output reg [15:0] ImmExt,
+    output reg        UseSp,
     output reg [2:0] ALUCtrl
 );
 
@@ -17,6 +18,7 @@ always @(*) begin
     ISCmv    = 1'b0;       
     ALUCtrl  = 3'b000;
     ImmExt   = 16'b0;
+    UseSp    = 1'b0;
 
     if (Instr[15:12] == 4'b1001 &&
         Instr[1:0]   == 2'b10) begin // C.ADD
@@ -25,6 +27,7 @@ always @(*) begin
         rs2      = Instr[6:2];
         RegWrite = 1'b1;
         ALUSrc   = 1'b0;
+        UseSp    = 1'b0;
         ALUCtrl  = 3'b000;
         ISCmv    = 1'b0;
     end
@@ -37,6 +40,7 @@ always @(*) begin
         RegWrite = 1'b1;
         ALUSrc   = 1'b0;
         ALUCtrl  = 3'b000;
+        UseSp    = 1'b0;
         ISCmv    = 1'b1;
     end
 
@@ -49,6 +53,7 @@ always @(*) begin
         RegWrite = 1'b1;
         ALUSrc   = 1'b0;
         ISCmv    = 1'b0;
+        UseSp    = 1'b0;
         ALUCtrl  = 3'b001;
     end
 
@@ -60,6 +65,7 @@ always @(*) begin
         rs2      = {2'b01, Instr[4:2]};
         RegWrite = 1'b1;
         ALUSrc   = 1'b0;
+        UseSp    = 1'b0;
         ISCmv    = 1'b0;
         ALUCtrl  = 3'b010;
     end
@@ -68,37 +74,40 @@ always @(*) begin
         Instr[6:5]   == 2'b10 &&
         Instr[1:0]   == 2'b01) begin // C.OR
 
-    rd       = {2'b01, Instr[9:7]};
-    rs2      = {2'b01, Instr[4:2]};
-    RegWrite = 1'b1;
-    ALUSrc   = 1'b0;
-    ISCmv    = 1'b0;
-    ALUCtrl  = 3'b011;
+        rd       = {2'b01, Instr[9:7]};
+        rs2      = {2'b01, Instr[4:2]};
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b0;
+        ISCmv    = 1'b0;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b011;
     end
 
     else if(Instr[15:10] == 6'b100011 &&
         Instr[6:5]   == 2'b11 &&
         Instr[1:0]   == 2'b01) begin // C.AND
 
-    rd       = {2'b01, Instr[9:7]};
-    rs2      = {2'b01, Instr[4:2]};
-    RegWrite = 1'b1;
-    ALUSrc   = 1'b0;
-    ISCmv    = 1'b0;
-    ALUCtrl  = 3'b100;
+        rd       = {2'b01, Instr[9:7]};
+        rs2      = {2'b01, Instr[4:2]};
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b0;
+        ISCmv    = 1'b0;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b100;
     end
 
     else if(Instr[15:13] == 3'b010 &&
         Instr[1:0]   == 2'b01) begin // C.LI
 
-    rd       = Instr[11:7];
-    rs2      = 5'b00000;
-    RegWrite = 1'b1;
-    ALUSrc   = 1'b1;
-    ISCmv    = 1'b1;
-    ALUCtrl  = 3'b000;
+        rd       = Instr[11:7];
+        rs2      = 5'b00000;
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        ISCmv    = 1'b1;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b000;
 
-    ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
+        ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
     end
 
     else if(Instr[15:13] == 3'b000 &&
@@ -108,6 +117,7 @@ always @(*) begin
         RegWrite = 1'b1;
         ALUSrc = 1'b1;
         ISCmv = 1'b0;
+        UseSp    = 1'b0;
         ALUCtrl = 3'b000;
 
         ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
@@ -121,9 +131,23 @@ always @(*) begin
         RegWrite = 1'b1;
         ALUSrc = 1'b1;
         ISCmv = 1'b0;
+        UseSp    = 1'b0;
         ALUCtrl = 3'b000;
 
         ImmExt = {{7{Instr[12]}}, Instr[4:3], Instr[5], Instr[2], Instr[6], 4'b0000};
+    end
+
+    else if(Instr[15:13] == 3'b000 &&
+        Instr[1:0] == 2'b00) begin // C.ADDI4SPN
+        rd = {2'b01, Instr[4:2]};
+        rs2 = 5'b00000;
+        RegWrite = 1'b1;
+        ALUSrc = 1'b1;
+        ISCmv = 1'b0;
+        UseSp    = 1'b1;
+        ALUCtrl = 3'b000;
+
+        ImmExt = {6'b000000,Instr[10:7],Instr[12:11],Instr[5],Instr[6],2'b00};
     end
 end
 endmodule

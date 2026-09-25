@@ -9,17 +9,17 @@ module RVC_CPU(
 wire [4:0] rd;
 wire [4:0] rs2;
 wire RegWrite;
-wire ALUSrc;
+wire ALUSrc,UseSp;
 wire [2:0] ALUCtrl;
 wire [15:0] ImmExt;
 
 Datapath datapath(
     clk,rst,ALUCtrl,rd,rs2,RegWrite,ALUSrc,
-    ISCmv,ImmExt,Result
+    ISCmv,ImmExt,UseSp,Result
 );
 
 Decoder decoder(
-    Instr,rd,rs2,RegWrite,ALUSrc,ISCmv,ImmExt,ALUCtrl
+    Instr,rd,rs2,RegWrite,ALUSrc,ISCmv,ImmExt,UseSp,ALUCtrl
 );
 
 
