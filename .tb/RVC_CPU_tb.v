@@ -244,6 +244,22 @@ initial begin
         else
             $display("C.ADDI FAIL");
 
+        // TEST : C.ADDI16SP
+        dut.datapath.reg_file.registers[2] = 16'd100;
+
+        // C.ADDI16SP x2, 16
+        Instr = 16'h6141;
+
+        #10;
+
+        if (dut.datapath.reg_file.registers[2] == 16'd116)
+            $display("C.ADDI16SP PASS");
+        else
+            $display("C.ADDI16SP FAIL");
+
+        $display("x2 = %d", dut.datapath.reg_file.registers[2]);
+        $display("ImmExt = %d", dut.decoder.ImmExt);
+
     // --------------------------------
     // END SIMULATION
     // --------------------------------

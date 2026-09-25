@@ -76,19 +76,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "Instr[14]",
-					"strict" : false
-				},
-				{
 					"name" : "Instr[0]",
-					"strict" : false
-				},
-				{
-					"name" : "Instr[10]",
-					"strict" : false
-				},
-				{
-					"name" : "Instr[13]",
 					"strict" : false
 				},
 				{
@@ -96,7 +84,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "Instr[14]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[10]",
+					"strict" : false
+				},
+				{
 					"name" : "Instr[11]",
+					"strict" : false
+				},
+				{
+					"name" : "Instr[13]",
 					"strict" : false
 				},
 				{

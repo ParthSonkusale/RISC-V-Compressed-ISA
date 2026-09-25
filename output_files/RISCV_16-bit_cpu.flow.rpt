@@ -1,5 +1,5 @@
 Flow report for RISCV_16-bit_cpu
-Fri Sep 25 08:09:22 2026
+Fri Sep 25 08:26:01 2026
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri Sep 25 08:09:21 2026       ;
+; Flow Status                        ; Successful - Fri Sep 25 08:26:01 2026       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; RISCV_16-bit_cpu                            ;
 ; Top-level Entity Name              ; RVC_CPU                                     ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,338                                       ;
-;     Total combinational functions  ; 842                                         ;
+; Total logic elements               ; 1,346                                       ;
+;     Total combinational functions  ; 850                                         ;
 ;     Dedicated logic registers      ; 512                                         ;
 ; Total registers                    ; 512                                         ;
 ; Total pins                         ; 34                                          ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/25/2026 08:09:14 ;
+; Start date & time ; 09/25/2026 08:25:54 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RISCV_16-bit_cpu    ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+------------------+-------------+-----------------------------------+
 ; Assignment Name                      ; Value                                  ; Default Value    ; Entity Name ; Section Id                        ;
 +--------------------------------------+----------------------------------------+------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                ; 71205094516570.179030395410620         ; --               ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                ; 71205094516570.179030495416224         ; --               ; --          ; --                                ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --               ; --          ; RVC_CPU_tb                        ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --               ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --               ; --          ; eda_board_design_boundary_scan    ;
@@ -108,7 +108,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4834 MB             ; 00:00:14                           ;
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4838 MB             ; 00:00:14                           ;
 ; Total                ; 00:00:07     ; --                      ; --                  ; 00:00:14                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
