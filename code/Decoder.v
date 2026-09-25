@@ -101,6 +101,17 @@ always @(*) begin
     ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
     end
 
-end
+    else if(Instr[15:13] == 3'b000 &&
+        Instr[1:0]   == 2'b01) begin // C.ADDI
+        rd = Instr[11:7];
+        rs2 = 5'b00000;
+        RegWrite = 1'b1;
+        ALUSrc = 1'b1;
+        ISCmv = 1'b0;
+        ALUCtrl = 3'b000;
 
+        ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
+    
+    end
+end
 endmodule

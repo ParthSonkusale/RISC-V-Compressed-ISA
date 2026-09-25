@@ -1,5 +1,5 @@
 Flow report for RISCV_16-bit_cpu
-Thu Sep 24 08:39:14 2026
+Fri Sep 25 08:09:22 2026
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Sep 24 08:39:14 2026       ;
+; Flow Status                        ; Successful - Fri Sep 25 08:09:21 2026       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; RISCV_16-bit_cpu                            ;
 ; Top-level Entity Name              ; RVC_CPU                                     ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,320                                       ;
-;     Total combinational functions  ; 824                                         ;
+; Total logic elements               ; 1,338                                       ;
+;     Total combinational functions  ; 842                                         ;
 ;     Dedicated logic registers      ; 512                                         ;
 ; Total registers                    ; 512                                         ;
 ; Total pins                         ; 34                                          ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/24/2026 08:39:08 ;
+; Start date & time ; 09/25/2026 08:09:14 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RISCV_16-bit_cpu    ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+------------------+-------------+-----------------------------------+
 ; Assignment Name                      ; Value                                  ; Default Value    ; Entity Name ; Section Id                        ;
 +--------------------------------------+----------------------------------------+------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                ; 71205094516570.179021934726468         ; --               ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                ; 71205094516570.179030395410620         ; --               ; --          ; --                                ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --               ; --          ; RVC_CPU_tb                        ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --               ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --               ; --          ; eda_board_design_boundary_scan    ;

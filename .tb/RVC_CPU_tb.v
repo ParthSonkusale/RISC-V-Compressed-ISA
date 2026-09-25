@@ -234,6 +234,16 @@ initial begin
         else
             $display("C.LI FAIL");
 
+        // TEST 8 : C.ADDI x6, 10
+        dut.datapath.reg_file.registers[6] = 16'd20;
+        Instr = 16'h0329;
+        #10;
+
+        if (dut.datapath.reg_file.registers[6] == 16'd30)
+            $display("C.ADDI PASS");
+        else
+            $display("C.ADDI FAIL");
+
     // --------------------------------
     // END SIMULATION
     // --------------------------------
