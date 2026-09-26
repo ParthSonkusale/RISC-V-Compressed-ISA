@@ -30,6 +30,7 @@ always @(*) begin
         UseSp    = 1'b0;
         ALUCtrl  = 3'b000;
         ISCmv    = 1'b0;
+
     end
 
     else if (Instr[15:12] == 4'b1000 &&
@@ -42,6 +43,7 @@ always @(*) begin
         ALUCtrl  = 3'b000;
         UseSp    = 1'b0;
         ISCmv    = 1'b1;
+
     end
 
     else if (Instr[15:10] == 6'b100011 &&
@@ -55,6 +57,7 @@ always @(*) begin
         ISCmv    = 1'b0;
         UseSp    = 1'b0;
         ALUCtrl  = 3'b001;
+
     end
 
     else if (Instr[15:10] == 6'b100011 &&
@@ -68,6 +71,7 @@ always @(*) begin
         UseSp    = 1'b0;
         ISCmv    = 1'b0;
         ALUCtrl  = 3'b010;
+
     end
 
     else if(Instr[15:10] == 6'b100011 &&
@@ -81,6 +85,7 @@ always @(*) begin
         ISCmv    = 1'b0;
         UseSp    = 1'b0;
         ALUCtrl  = 3'b011;
+
     end
 
     else if(Instr[15:10] == 6'b100011 &&
@@ -94,6 +99,7 @@ always @(*) begin
         ISCmv    = 1'b0;
         UseSp    = 1'b0;
         ALUCtrl  = 3'b100;
+
     end
 
     else if(Instr[15:13] == 3'b010 &&
@@ -107,6 +113,7 @@ always @(*) begin
         UseSp    = 1'b0;
         ALUCtrl  = 3'b000;
 
+
         ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
     end
 
@@ -119,6 +126,7 @@ always @(*) begin
         ISCmv = 1'b0;
         UseSp    = 1'b0;
         ALUCtrl = 3'b000;
+
 
         ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
     
@@ -134,20 +142,62 @@ always @(*) begin
         UseSp    = 1'b0;
         ALUCtrl = 3'b000;
 
+
         ImmExt = {{7{Instr[12]}}, Instr[4:3], Instr[5], Instr[2], Instr[6], 4'b0000};
     end
 
-    else if(Instr[15:13] == 3'b000 &&
-        Instr[1:0] == 2'b00) begin // C.ADDI4SPN
-        rd = {2'b01, Instr[4:2]};
-        rs2 = 5'b00000;
-        RegWrite = 1'b1;
-        ALUSrc = 1'b1;
-        ISCmv = 1'b0;
-        UseSp    = 1'b1;
-        ALUCtrl = 3'b000;
+    else if(Instr[15:13] == 3'b011 &&
+            Instr[11:7] == 5'b00010 &&
+            Instr[1:0]   == 2'b01) begin // C.ADDI16SP
 
-        ImmExt = {6'b000000,Instr[10:7],Instr[12:11],Instr[5],Instr[6],2'b00};
+        rd       = 5'b00010;
+        rs2      = 5'b00000;
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        ISCmv    = 1'b0;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b000;
+
+        ImmExt = {{7{Instr[12]}},
+                Instr[4:3],
+                Instr[5],
+                Instr[2],
+                Instr[6],
+                4'b0000};
     end
+
+    else if(Instr[15:13] == 3'b011 &&
+            Instr[11:7] != 5'b00000 &&
+            Instr[11:7] != 5'b00010 &&
+            Instr[1:0]   == 2'b01) begin // C.LUI
+
+        rd       = Instr[11:7];
+        rs2      = 5'b00000;
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        ISCmv    = 1'b0;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b000;
+
+        ImmExt = {6'b000000,
+                Instr[12],
+                Instr[6:2],
+                4'b0000};
+    end
+
+    else if(Instr[15:13] == 3'b010 &&
+            Instr[1:0]   == 2'b00) begin // C.LW
+
+        rd       = {2'b01, Instr[4:2]};
+        rs2      = 5'b00000; 
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        ISCmv    = 1'b0;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b000;
+
+        ImmExt = {9'b0,Instr[5],Instr[12:10],Instr[6],2'b0};
+    end
+
 end
 endmodule

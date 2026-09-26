@@ -278,6 +278,29 @@ initial begin
         $display("x8     = %d", dut.datapath.reg_file.registers[8]);
         $display("ImmExt = %d", dut.decoder.ImmExt);
 
+        // ========================================
+        // TEST 8 : C.LUI x5, 1
+        // ========================================
+
+        dut.datapath.reg_file.registers[5] = 16'd0;
+
+        // C.LUI x5, 1
+        Instr = 16'h6285;
+
+        #10;
+
+        $display("C.LUI TEST");
+        $display("x5       = %d", dut.datapath.reg_file.registers[5]);
+        $display("ImmExt   = %d", dut.ImmExt);
+        $display("ALUResult= %d", dut.Result);
+
+        if (dut.datapath.reg_file.registers[5] == 16'd4096)
+            $display("C.LUI PASS");
+        else
+            $display("C.LUI FAIL");
+
+        $display("========================================");
+
     // --------------------------------
     // END SIMULATION
     // --------------------------------
