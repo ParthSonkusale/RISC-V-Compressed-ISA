@@ -3,27 +3,25 @@ module RVC_CPU(
     input rst,
     input [15:0] Instr,
  
+    output [15:0] PC,
     output [15:0] Result
 );
  
-wire [4:0] rd;
-wire [4:0] rs1;
-wire [4:0] rs2;
-wire RegWrite;
+wire [4:0] rd,rs2,rs1;
+wire RegWrite,Jal,PCScr;
 wire ALUSrc, UseSp, ISCmv;
 wire [2:0] ALUCtrl;
 wire [15:0] ImmExt;
-wire MemWrite;
-wire MemtoReg;
+wire MemWrite,MemtoReg;
  
 Datapath datapath(
     clk, rst, ALUCtrl, rd, rs1, rs2, RegWrite, ALUSrc,
-    ISCmv, ImmExt, UseSp, MemWrite, MemtoReg, Result
+    ISCmv, PCScr, Jal, ImmExt, UseSp, MemWrite, MemtoReg, PC,Result
 );
  
 Decoder decoder(
     Instr, rd, rs1, rs2, RegWrite, ALUSrc, ISCmv, ImmExt, UseSp,
-    ALUCtrl, MemWrite, MemtoReg
+    ALUCtrl, MemWrite, MemtoReg,Jal,PCSrc
 );
  
 endmodule
