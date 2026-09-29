@@ -261,7 +261,22 @@ always @(*) begin
         ISCmv    = 1'b0;
                 
         ImmExt = {10'b0, Instr[12], Instr[6:2]};
-            end
+    end
+
+        else if(Instr[15:13] == 3'b100 && //C.SRAI
+            Instr[11:10] == 2'b01  &&
+            Instr[1 : 0] == 2'b01) begin
+        rd       = {2'b01,Instr[9:7]};
+        rs1      = {2'b01,Instr[9:7]};   
+        rs2      = 5'b0;
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b101;
+        ISCmv    = 1'b0;
+                
+        ImmExt = {10'b0, Instr[12], Instr[6:2]};
+        end
 
 
 end
