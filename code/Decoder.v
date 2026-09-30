@@ -32,11 +32,13 @@ always @(*) begin
     PCforJR = 0;
     PCSrc = 0;
  
-    if (Instr[15:12] == 4'b1001 &&   // C.ADD  (CR format)
+    if (Instr[15:12] == 4'b1001 &&   // C.ADD
+        Instr[11:7]  != 5'b0    &&
+        Instr[6:2]   != 5'b0    &&
         Instr[1:0]   == 2'b10) begin
  
         rd       = Instr[11:7];
-        rs1      = Instr[11:7];   // CR format: rd/rs1 share the same field
+        rs1      = Instr[11:7]; 
         rs2      = Instr[6:2];
         RegWrite = 1'b1;
         ALUSrc   = 1'b0;
@@ -338,6 +340,13 @@ always @(*) begin
         RegWrite = 1'b0;
         PCSrc    = 1'b1;
         PCforJR  = 1'b1;
+    end
+
+    else if(Instr[15:12] == 4'b1001 && //C.EBREAK
+            Instr[11:7]  == 5'b0    &&
+            Instr[6:2]   == 5'b0    &&
+            Instr[1:0]   == 2'b10) begin
+
     end
 
 end
