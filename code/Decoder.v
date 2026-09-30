@@ -11,7 +11,7 @@ module Decoder(
     output reg [2:0] ALUCtrl,
     output reg       MemWrite,
     output reg       MemtoReg,
-    output reg       Jal,
+    output reg       Jal,PCforJR,
     output reg       PCSrc
 );
  
@@ -28,6 +28,9 @@ always @(*) begin
     UseSp    = 1'b0;
     MemWrite = 1'b0;
     MemtoReg = 1'b0;
+    Jal = 0; 
+    PCforJR = 0;
+    PCSrc = 0;
  
     if (Instr[15:12] == 4'b1001 &&   // C.ADD  (CR format)
         Instr[1:0]   == 2'b10) begin
@@ -44,6 +47,7 @@ always @(*) begin
     end
  
     else if (Instr[15:12] == 4'b1000 &&  // C.MV  (CR format)
+             Instr[6:2]   != 5'b00000 && 
              Instr[1:0]   == 2'b10) begin 
  
         rd       = Instr[11:7];
@@ -324,6 +328,17 @@ always @(*) begin
         ImmExt = {8'b0, Instr[3:2], Instr[12], Instr[6:4], 2'b00};
     end
 
+    else if(Instr[15:13] == 3'b100   && //C.JR
+            Instr[6:2]   == 5'b00000 && 
+            Instr[11:7]  != 5'b0     && 
+            Instr[1:0]   == 2'b10) begin
+        rd       = 5'b0;
+        rs1      = Instr[11:7];   
+        rs2      = 5'b0;
+        RegWrite = 1'b0;
+        PCSrc    = 1'b1;
+        PCforJR  = 1'b1;
+    end
 
 end
 endmodule

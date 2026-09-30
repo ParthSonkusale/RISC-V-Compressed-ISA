@@ -4,8 +4,8 @@ module Datapath(
     input [4:0] rd,rs1,rs2,
     input [15:0] ImmExt,
     input RegWrite,
-    input ALUSrc,UseSp,ISCmv,PCScr,Jal,
-    input MemWrite,MemtoReg,
+    input ALUSrc,UseSp,ISCmv,PCSrc,Jal,
+    input MemWrite,MemtoReg,PCforJR,
     output reg [15:0] PC,
     output [15:0] ALUResult
 );
@@ -40,7 +40,7 @@ Adder pcaddbranch (PC, ImmExt, PCTarget);
 
  
 assign rs1_actual = UseSp  ? 5'b00010 : rs1;
-assign PCNext     = PCSrc  ? PCTarget : PCPlus2; //pcmux
+assign PCNext     = PCSrc  ? (PCforJR ? RD1:PCTarget) : PCPlus2; //pcmux
 assign WriteData = Jal ? PCPlus2 : (MemtoReg ? MemReadData : ALUResult);
 assign ALU_A      = ISCmv  ? 16'b0  : RD1;
 assign ALU_B      = ALUSrc ? ImmExt : RD2;
