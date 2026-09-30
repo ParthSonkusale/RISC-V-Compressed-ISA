@@ -346,8 +346,19 @@ always @(*) begin
             Instr[11:7]  == 5'b0    &&
             Instr[6:2]   == 5'b0    &&
             Instr[1:0]   == 2'b10) begin
-
     end
-
+    
+    else if(Instr[15:13] == 3'110 &&  //C.SWSP
+            Instr[1:0]   == 2'b10) begin        
+        rd       = 5'b0;
+        rs1      = 5'b0;   
+        rs2      = Instr[6:2];
+        RegWrite = 1'b0;
+        ALUSrc   = 1'b1;
+        UseSp    = 1'b1;
+        ALUCtrl  = 3'b000;
+        ISCmv    = 1'b0;
+        ImmExt = {8'b0, Instr[8:7], Instr[12:9],2'b00};
+    end
 end
 endmodule
