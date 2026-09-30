@@ -306,7 +306,23 @@ always @(*) begin
         ISCmv    = 1'b0;
                 
         ImmExt = {10'b0, Instr[12], Instr[6:2]};
-            end
+    end
+
+    else if(Instr[15:13] == 3'b010 && //C.LWSP
+            Instr[11:7]  != 5'b0   &&
+            Instr[1:0]   == 2'b10) begin
+        rd       = Instr[11:7];
+        rs1      = 5'b0;   
+        rs2      = 5'b0;
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        UseSp    = 1'b1;
+        ALUCtrl  = 3'b000;
+        ISCmv    = 1'b0;
+        MemtoReg = 1'b1;   
+                
+        ImmExt = {8'b0, Instr[3:2], Instr[12], Instr[6:4], 2'b00};
+    end
 
 
 end
