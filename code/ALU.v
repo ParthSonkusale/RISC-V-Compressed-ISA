@@ -15,6 +15,7 @@ always @(*) begin
         3'b100: ALUResult = A & B;   // C.AND
         3'b111: ALUResult = A >>B;   //C.SRLI (logical Right shift)
         3'b101: ALUResult = $signed(A) >>>B;   //C.SRAI(Arithmatic Right shift)
+        3'b110: ALUResult = A <<B;   //C.SLLI(logical left shift)
         default: ALUResult = 16'b0;
     endcase
 end

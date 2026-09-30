@@ -251,8 +251,8 @@ always @(*) begin
     else if(Instr[15:13] == 3'b100 && //C.SRLI
             Instr[11:10] == 2'b00  &&
             Instr[1 : 0] == 2'b01) begin
-        rd       = {2'b01,Instr[9:7]};
-        rs1      = {2'b01,Instr[9:7]};   
+        rd       = 5'b0;
+        rs1      = 5'b0;   
         rs2      = 5'b0;
         RegWrite = 1'b1;
         ALUSrc   = 1'b1;
@@ -266,8 +266,8 @@ always @(*) begin
     else if(Instr[15:13] == 3'b100 && //C.SRAI
             Instr[11:10] == 2'b01  &&
             Instr[1 : 0] == 2'b01) begin
-        rd       = {2'b01,Instr[9:7]};
-        rs1      = {2'b01,Instr[9:7]};   
+        rd       = 5'b0;
+        rs1      = 5'b0;   
         rs2      = 5'b0;
         RegWrite = 1'b1;
         ALUSrc   = 1'b1;
@@ -281,8 +281,8 @@ always @(*) begin
     else if(Instr[15:13] == 3'b100 && //C.ANDI
             Instr[11:10] == 2'b10  &&
             Instr[1 : 0] == 2'b01) begin
-        rd       = {2'b01,Instr[9:7]};
-        rs1      = {2'b01,Instr[9:7]};   
+        rd       = 5'b0;
+        rs1      = 5'b0;   
         rs2      = 5'b0;
         RegWrite = 1'b1;
         ALUSrc   = 1'b1;
@@ -292,6 +292,21 @@ always @(*) begin
                 
         ImmExt = {10'b0, Instr[12], Instr[6:2]};
     end
+
+    else if(Instr[15:13] == 3'b000 && //C.SLLI
+            Instr[11:7]  != 5'b0   &&
+            Instr[1:0]   == 2'b10)begin
+        rd       = Instr[11:7];
+        rs1      = Instr[11:7];   
+        rs2      = 5'b0;
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        UseSp    = 1'b0;
+        ALUCtrl  = 3'b110;
+        ISCmv    = 1'b0;
+                
+        ImmExt = {10'b0, Instr[12], Instr[6:2]};
+            end
 
 
 end
