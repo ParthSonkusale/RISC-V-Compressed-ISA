@@ -345,14 +345,27 @@ always @(*) begin
         ImmExt = {8'b0, Instr[3:2], Instr[12], Instr[6:4], 2'b00};
     end
 
-    else if(Instr[15:13] == 3'b100   && //C.JR
-            Instr[6:2]   == 5'b00000 && 
+    else if(Instr[15:12] == 4'b1000  && //C.JR
+            Instr[6:2]   == 5'b0     && 
             Instr[11:7]  != 5'b0     && 
             Instr[1:0]   == 2'b10) begin
         rd       = 5'b0;
         rs1      = Instr[11:7];   
         rs2      = 5'b0;
         RegWrite = 1'b0;
+        PCSrc    = 1'b1;
+        PCforJR  = 1'b1;
+    end
+
+    else if(Instr[15:12] == 4'b1001  && //C.JALR
+            Instr[6:2]   == 5'b0     && 
+            Instr[11:7]  != 5'b0     && 
+            Instr[1:0]   == 2'b10) begin
+        rd       = 5'b00001;
+        rs1      = Instr[11:7];   
+        rs2      = 5'b0;
+        RegWrite = 1'b1;
+        Jal      = 1'b1;
         PCSrc    = 1'b1;
         PCforJR  = 1'b1;
     end
@@ -375,5 +388,7 @@ always @(*) begin
         ISCmv    = 1'b0;
         ImmExt = {8'b0, Instr[8:7], Instr[12:9],2'b00};
     end
+
+
 end
 endmodule     
