@@ -47,6 +47,7 @@ always @(*) begin
         ISCmv    = 1'b0;
  
     end
+
  
     else if (Instr[15:12] == 4'b1000 &&  // C.MV  (CR format)
              Instr[6:2]   != 5'b00000 && 
@@ -227,6 +228,20 @@ always @(*) begin
         ImmExt = {9'b0, Instr[5], Instr[12:10], Instr[6], 2'b0};
     end
 
+    else if(Instr[15:13] == 3'b000 &&  //C.ADDI4SPN
+            Instr[4:2]   != 3'b0   &&
+            Instr[1:0]   == 2'b00) begin 
+        rd       = {2'b01, Instr[4:2]};   
+        rs1      = 5'b0;              
+        rs2      = 5'b0;    
+        RegWrite = 1'b1;
+        ALUSrc   = 1'b1;
+        UseSp    = 1'b1;
+        ALUCtrl  = 3'b000;                
+
+        ImmExt = {6'b0, Instr[10:7], Instr[12:11], Instr[5], Instr[6], 2'b00};
+    end
+
     else if(Instr[15:13] == 3'b000 &&  //C.NOP
             Instr[12:2]  == 11'b0  &&
             Instr[1:0]   == 2'b10) begin 
@@ -361,4 +376,4 @@ always @(*) begin
         ImmExt = {8'b0, Instr[8:7], Instr[12:9],2'b00};
     end
 end
-endmodule
+endmodule     
