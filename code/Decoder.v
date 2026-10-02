@@ -3,20 +3,14 @@ module Decoder(
     output reg [4:0] rd,
     output reg [4:0] rs1,
     output reg [4:0] rs2,
-    output reg       RegWrite,
-    output reg       ALUSrc,
-    output reg       ISCmv,
     output reg [15:0] ImmExt,
-    output reg       UseSp,
     output reg [2:0] ALUCtrl,
-    output reg       MemWrite,
-    output reg       MemtoReg,
-    output reg       Jal,PCforJR,
+    output reg       RegWrite,ALUSrc,ISCmv,UseSp,
+    output reg       MemWrite,MemtoReg,Jal,PCforJR,   
     output reg       PCSrc
 );
  
 always @(*) begin
-    // ---- safe defaults every cycle ----
     rd       = 5'b0;
     rs1      = 5'b0;
     rs2      = 5'b0;
@@ -45,10 +39,8 @@ always @(*) begin
         UseSp    = 1'b0;
         ALUCtrl  = 3'b000;
         ISCmv    = 1'b0;
- 
     end
 
- 
     else if (Instr[15:12] == 4'b1000 &&  // C.MV  (CR format)
              Instr[6:2]   != 5'b00000 && 
              Instr[1:0]   == 2'b10) begin 
@@ -61,7 +53,6 @@ always @(*) begin
         ALUCtrl  = 3'b000;
         UseSp    = 1'b0;
         ISCmv    = 1'b1;
- 
     end
  
     else if (Instr[15:10] == 6'b100011 &&  // C.SUB
@@ -76,7 +67,6 @@ always @(*) begin
         ISCmv    = 1'b0;
         UseSp    = 1'b0;
         ALUCtrl  = 3'b001;
- 
     end
  
     else if (Instr[15:10] == 6'b100011 && // C.XOR
@@ -91,7 +81,6 @@ always @(*) begin
         UseSp    = 1'b0;
         ISCmv    = 1'b0;
         ALUCtrl  = 3'b010;
- 
     end
  
     else if(Instr[15:10] == 6'b100011 && // C.OR
@@ -106,7 +95,6 @@ always @(*) begin
         ISCmv    = 1'b0;
         UseSp    = 1'b0;
         ALUCtrl  = 3'b011;
- 
     end
  
     else if(Instr[15:10] == 6'b100011 && // C.AND
@@ -121,7 +109,6 @@ always @(*) begin
         ISCmv    = 1'b0;
         UseSp    = 1'b0;
         ALUCtrl  = 3'b100;
- 
     end
  
     else if(Instr[15:13] == 3'b010 && // C.LI
@@ -152,7 +139,6 @@ always @(*) begin
         ALUCtrl  = 3'b000;
  
         ImmExt = {{10{Instr[12]}}, Instr[12], Instr[6:2]};
- 
     end
  
     else if(Instr[15:13] == 3'b011 &&  // C.ADDI16SP
@@ -255,7 +241,17 @@ always @(*) begin
         UseSp    = 1'b0;
         ALUCtrl  = 3'b000;              
         ImmExt   = 16'b0;
+    end
 
+    else if(Instr[15:13] == 3'b101 &&  //C.J
+            Instr[1:0]   == 2'b01)begin 
+            rd = 5'b0;
+            rs1 = 5'b0;
+            rs2 = 5'b0;
+            RegWrite = 1'b0;
+            Jal = 1'b0;
+            PCSrc = 1'b1;
+            ImmExt = {{5{Instr[12]}}, Instr[8], Instr[10:9], Instr[6], Instr[7], Instr[2], Instr[11], Instr[5:3], 1'b0};
     end
 
     else if(Instr[15:13] == 3'b001 &&  //C.JAL
